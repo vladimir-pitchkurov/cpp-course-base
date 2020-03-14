@@ -3,19 +3,32 @@
 using namespace std;
 
 int main() {
-    // Последовательность состоит из натуральных чисел и завершается числом 0.
-    // Определите значение второго по величине элемента в этой последовательности, то есть элемента,
-    // который будет наибольшим, если из последовательности удалить наибольший элемент.
-    int max = 0, a, max2 = 0;
-    while (cin >> a && a) {
-        if (a >= max) {
-            max2 = max;
-            max = a;
+    // Последовательность Фибоначчи определяется так:
+    //
+    //F(0) = 0, F(1) = 1, …, F(n) = F(n−1) + F(n−2).
+    //
+    //По данному числу N определите N-е число Фибоначчи F(N).
+
+    int counter = 0, n, current = 0, prev = 0, prev2 = 0;
+    cin >> n;
+
+    while (n >= counter) {
+        if (n == counter) {
+            break;
         }
-        if (a < max && a > max2) {
-            max2 = a;
+        ++counter;
+        if (counter == 1) {
+            current = 1;
+        } else if (counter == 2) {
+            current = 1;
+            prev = 1;
+        } else {
+            prev2 = prev;
+            prev = current;
+            current = prev + prev2;
         }
     }
-    cout << max2;
+    cout << current;
+
     return 0;
 }
