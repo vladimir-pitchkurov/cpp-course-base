@@ -3,14 +3,12 @@
 using namespace std;
 
 int main() {
-// По данному целому числу N распечатайте все квадраты натуральных чисел, не превосходящие N, в порядке возрастания.
-    int n, counter = 1, pow;
+// Дано целое число, не меньшее 2. Выведите его наименьший натуральный делитель, отличный от 1.
+    int n, counter = 2;
     cin >> n;
     while (true) {
-        pow = counter * counter;
-        if (pow <= n) {
-            cout << pow << " ";
-        } else {
+        if (n % counter == 0) {
+            cout << counter;
             break;
         }
         counter++;
