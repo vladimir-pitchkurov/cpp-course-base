@@ -6,28 +6,23 @@
 using namespace std;
 
 int main() {
-    // Дан массив чисел. Выведите все элементы массива, которые больше предыдущего элемента .
+    // Выведите значение наименьшего из всех положительных элементов в массиве.
+    // Известно, что в массиве есть хотя бы один положительный элемент.
     int n;
-    int tmp, x, y;
+    int tmp, min_unsign = 0;
     vector<int> a;
 
     cin >> n;
     for (int i = 0; i < n; i++) {
         cin >> tmp;
-        a.push_back(tmp);
-    }
-    for (int i = 1; i < a.size(); i++) {
-        if ((a[i] > 0 && a[i - 1] > 0) || (a[i] < 0 && a[i - 1] < 0)) {
-            x = a[i - 1];
-            y = a[i];
-            if (x > y) {
-                x = x + y;
-                y = x - y;
-                x = x - y;
+        if (tmp > 0) {
+            a.push_back(tmp);
+            if (tmp < a[0]) {
+                a[0] = tmp;
             }
-            cout << x << " " << y;
-            break;
         }
     }
+
+    cout << a[0];
     return 0;
 }
