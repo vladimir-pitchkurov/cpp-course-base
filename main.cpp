@@ -6,26 +6,24 @@
 using namespace std;
 
 int main() {
-    // Выведите значение наименьшего нечетного элемента списка,
-    // а если в списке нет нечетных элементов - выведите число 0.
+    // Циклически сдвиньте элементы списка вправо (A[0] переходит на место A[1], A[1] на место A[2], ...,
+    // последний элемент переходит на место A[0]).
     int n;
     int tmp;
-    vector<int> a;
-
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    vector<int> a(n);
+
+    for (int i = 1; i <= n; i++) {
         cin >> tmp;
-        if (tmp % 2 != 0) {
-            a.push_back(tmp);
-            if (tmp < a[0]) {
-                a[0] = tmp;
-            }
+        if (i == n) {
+            a[0] = tmp;
+            break;
         }
+        a[i] = tmp;
     }
-    if (a.size() == 0) {
-        cout << 0;
-    } else {
-        cout << a[0];
+    for (auto x:a) {
+        cout << x << " ";
     }
+
     return 0;
 }
